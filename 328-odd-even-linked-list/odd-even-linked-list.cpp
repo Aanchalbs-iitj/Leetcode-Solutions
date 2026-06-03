@@ -19,6 +19,8 @@ public:
         int cnt=0;
         while(head!=NULL){
             cnt++;
+            ListNode* nextNode = head->next; //save next
+            head->next = nullptr;//detach curr node
             if (cnt & 1){
                 curr1->next=head;
                 curr1=head;
@@ -27,9 +29,8 @@ public:
                 curr2->next=head;
                 curr2=head;
             }
-            head=head->next;
+            head=nextNode;
         }
-        curr2->next=nullptr;
         curr1->next=dummy2.next;
         return dummy1.next;
     }
