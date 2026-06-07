@@ -4,27 +4,41 @@ public:
     MyQueue() {
         
     }
-    // considering push operations are less
+    // considering push operations >> pop,top;
     void push(int x) {
-        while(!s1.empty()){//jo bhi elements hai s1 mein unko s2 mein bhejo
-            s2.push(s1.top());
-            s1.pop();
-        }
+        
         s1.push(x); //new element in s1
-        while(!s2.empty()){// s2 to s1
-            s1.push(s2.top());
-            s2.pop();
-        }
+       
     }
     
     int pop() {
-        int el=s1.top();
-        s1.pop();
-        return el;
+        if (!s2.empty()){
+            int el=s2.top();
+            s2.pop();
+            return el;
+        }
+        else {
+            while(!s1.empty()){
+                s2.push(s1.top());
+                s1.pop();
+            }
+            int el=s2.top();
+            s2.pop();
+            return el;
+        }
     }
     
     int peek() {
-        return s1.top();
+        if (!s2.empty()){
+            return s2.top();
+        }
+        else {
+            while(!s1.empty()){
+                s2.push(s1.top());
+                s1.pop();
+            }
+            return s2.top();
+        }
     }
     
     bool empty() {
