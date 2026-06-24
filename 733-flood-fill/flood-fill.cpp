@@ -25,6 +25,7 @@ private:
     }
 public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        if (image[sr][sc] == color) return image;//If the new color is the same as the initial color
         int iniCol=image[sr][sc];
         vector<vector<int>> ans=image;//copy
         bfs(sr,sc,image,ans, color,iniCol);
