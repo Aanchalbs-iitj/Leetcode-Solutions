@@ -1,13 +1,12 @@
 class Solution {
 public:
     int arraySign(vector<int>& nums) {
-        int product=1;
+        bool ispositive=true;
         for (int i=0;i<nums.size();i++){
 
             if (nums[i]==0) return 0;
-            if (nums[i]>0) product*=1;
-            else product*=-1;
+            if (nums[i]<0) ispositive= !ispositive;
         }
-        return product;
+        return (ispositive? 1:-1);
     }
 };
