@@ -1,30 +1,11 @@
 class Solution {
 public:
     int romanToInt(string s) {
+        unordered_map<char,int> mp={ {'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};
         int num=0;
         for(int i=0;i<s.size();i++){
-            if (s[i]=='I'){//val=1
-                if (i+1<s.size() && (s[i+1]=='V'||s[i+1]=='X')){
-                    num--;
-                }
-                else num++;
-            }
-            else if (s[i]=='V') num+=5;
-            else if (s[i]=='X'){
-                if (i+1<s.size() && (s[i+1]=='L'||s[i+1]=='C')){
-                    num-=10;
-                }
-                else num+=10;
-            }
-            else if (s[i]=='L') num+=50;
-            else if (s[i]=='C'){//val=1
-                if (i+1<s.size() && (s[i+1]=='D'||s[i+1]=='M')){
-                    num-=100;
-                }
-                else num+=100;
-            }
-            else if (s[i]=='D') num+=500;
-            else num+=1000;
+            if (i+1<s.size() && mp[s[i]]<mp[s[i+1]]) num-=mp[s[i]];
+            else num+=mp[s[i]];
         }
         return num;
     }
