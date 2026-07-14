@@ -1,7 +1,9 @@
 class Solution {
 public:
-    int tribonacci(int n) {
-        vector<int> dp(38,0);
+    int tribonacci(int n) {//tabulation - bottom up
+        if (n==0) return 0;
+        if (n==1 ||n==2) return 1;
+        vector<int> dp(n+1,0);
         dp[0]=0;
         dp[1]=1;
         dp[2]=1;
