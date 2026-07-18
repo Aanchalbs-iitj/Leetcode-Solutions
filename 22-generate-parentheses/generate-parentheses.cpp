@@ -12,15 +12,15 @@ public:
             str.pop_back();
         }
         if (close<open){
-            str=str+")";
+            str.push_back(')');
             gen(ans,idx+1,str,open,close+1,n);
             str.pop_back();
         }
     }
     vector<string> generateParenthesis(int n) {
         vector<string> ans;
-        string str="(";
-        gen(ans, 1,str,1,0,n);
+        string str;//start from empty string
+        gen(ans,0,str,0,0,n);
         return ans;
     }
 };
