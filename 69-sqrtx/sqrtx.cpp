@@ -1,6 +1,16 @@
 class Solution {
 public:
     int mySqrt(int x) {
-        return pow(x,0.5);
+        int low=0, high=x;
+        while(low<=high){
+            long long mid=low+(high-low)/2;
+            long long val=mid*mid;
+
+        if (val<=x){
+            low=mid+1;// or we can store the ans in some variable also;
+        }
+        else high=mid-1;
+        }
+        return high;
     }
 };
