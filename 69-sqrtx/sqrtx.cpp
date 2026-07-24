@@ -4,9 +4,9 @@ public:
         int low=0, high=x;
         while(low<=high){
             long long mid=low+(high-low)/2;
-            long long val=mid*mid;
+            // long long val=mid*mid;
 
-        if (val<=x){
+        if (mid*mid<=x){
             low=mid+1;// or we can store the ans in some variable also;
         }
         else high=mid-1;
