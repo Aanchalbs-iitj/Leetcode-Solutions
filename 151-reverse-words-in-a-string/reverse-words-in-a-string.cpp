@@ -1,7 +1,7 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        //mutable strings and o(1) space;
+        //mutable strings and o(n) space;
         //in place
         reverse(s.begin(),s.end());
         string ans="";
