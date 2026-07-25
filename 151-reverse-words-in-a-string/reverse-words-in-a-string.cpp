@@ -1,21 +1,24 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        //mutable strings and o(n) space;
-        //in place
-        reverse(s.begin(),s.end());
-        string ans="";
-        for(int i=0;i<s.size();i++){//individial word findings
+        //using stack
+        stack<string> st;
+        int n=s.size();
+        for(int i=0;i<n;i++){
+            if (s[i]==' ') continue;
             string word="";
-            while (i<s.size()&&s[i]!=' '){
+            while(i<n && s[i]!=' '){
                 word+=s[i];
                 i++;
             }
-            reverse(word.begin(),word.end());
-            if(word.length()>0){
-                ans+=" "+ word;
-            }
+            st.push(word);
         }
-        return ans.substr(1);
+        string ans="";
+        while(!st.empty()){
+            ans+=st.top();
+            st.pop();
+            if(!st.empty()) ans+=" ";
+        }
+        return ans;
     }
 };
