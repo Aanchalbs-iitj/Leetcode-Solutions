@@ -1,14 +1,9 @@
 class Solution {
 public:
     int minimumPushes(string word) {
-        unordered_map<char,int> mpp;
-        for(auto it: word){
-            mpp[it]++;
-        }
-        //copy the values into another vector now and sort in decreasing order
         vector<int> freq(26,0);
-        for(auto &it: mpp){
-            freq.push_back(it.second);
+        for (char c: word){
+            freq[c-'a']++;
         }
         sort(freq.begin(),freq.end(),greater<int>());//in place sorting
         int cost=0;
