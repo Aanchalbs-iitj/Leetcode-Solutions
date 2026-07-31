@@ -7,7 +7,7 @@ public:
         }
         //copy the values into another vector now and sort in decreasing order
         vector<int> freq(26,0);
-        for(auto it: mpp){
+        for(auto &it: mpp){
             freq.push_back(it.second);
         }
         sort(freq.begin(),freq.end(),greater<int>());//in place sorting
