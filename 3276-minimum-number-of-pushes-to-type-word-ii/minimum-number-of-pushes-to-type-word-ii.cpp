@@ -6,13 +6,13 @@ public:
             mpp[it]++;
         }
         //copy the values into another vector now and sort in decreasing order
-        vector<int> freq;
+        vector<int> freq(26,0);
         for(auto it: mpp){
             freq.push_back(it.second);
         }
         sort(freq.begin(),freq.end(),greater<int>());//in place sorting
         int cost=0;
-        for (int i=0;i<freq.size();i++){
+        for (int i=0;i<26;i++){
             if (i<8) cost+=freq[i];
             else if (i<16) cost+=(2*freq[i]);
             else if (i<24) cost+=(3*freq[i]);
