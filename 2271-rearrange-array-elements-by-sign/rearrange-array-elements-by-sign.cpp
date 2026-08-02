@@ -2,17 +2,17 @@ class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
         int n=nums.size();
-        queue<int> qp,qn;
+        vector<int> ans(n,0);
+        int pos=0,neg=1;
         for(int i=0;i<n;i++){
-            if(nums[i]>=0) qp.push(nums[i]);
-            else qn.push(nums[i]);
-        }
-        vector<int> ans;
-        while(!qp.empty()){//we can use !qp.empty() && !qn.empty() too but we are having equal no of pos and negative numbers
-        ans.push_back(qp.front());
-        qp.pop();
-        ans.push_back(qn.front());
-        qn.pop();
+            if(nums[i]<0){
+                ans[neg]=nums[i];
+                neg+=2;
+            }
+            else{
+                ans[pos]=nums[i];
+                pos+=2;
+            }
         }
         return ans;
     }
