@@ -8,7 +8,7 @@ public:
             else qn.push(nums[i]);
         }
         vector<int> ans;
-        while(!qp.empty()){
+        while(!qp.empty()){//we can use !qp.empty() && !qn.empty() too but we are having equal no of pos and negative numbers
         ans.push_back(qp.front());
         qp.pop();
         ans.push_back(qn.front());
