@@ -4,15 +4,18 @@ public:
         int n=nums.size();
         int left=0;
         int sum=0;
-        int ans=INT_MAX;
+        int ans=0;//using ans =0 and only updating it when we find a valid subarray of smaller length
         for(int right=0;right<n;right++){
             sum+=nums[right];
             while(sum>=target){
-                ans=min(ans,right-left+1);
+                int len=right-left+1;
+                if(ans==0|| len<ans){
+                    ans=len;
+                }
                 sum-=nums[left];
                 left++;
             }
         }
-        return (ans==INT_MAX)? 0: ans;
+        return ans;
     }
 };
